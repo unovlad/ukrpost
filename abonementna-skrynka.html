@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Абонементна скринька — Укрпошта</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#16233D;
+    --navy-2:#1E2F52;
+    --yellow:#FFC629;
+    --yellow-dark:#E0A800;
+    --bg:#FFFFFF;
+    --bg-soft:#F7F7F8;
+    --gray:#8B93A1;
+    --gray-2:#5B6472;
+    --line:#EAEBEE;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Golos Text',sans-serif;
+    color:var(--navy);
+    background:var(--bg);
+    line-height:1.55;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+
+  /* header */
+  header{border-bottom:1px solid var(--line);}
+  .header-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 0;
+  }
+  .logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:19px;letter-spacing:0.2px;}
+  .logo-mark{
+    width:26px;height:26px;border-radius:7px;background:var(--yellow);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:15px;color:var(--navy);
+  }
+  nav{display:flex;gap:28px;}
+  nav a{font-size:14.5px;color:var(--gray-2);font-weight:500;padding-bottom:4px;}
+  nav a.active{color:var(--navy);border-bottom:2px solid var(--navy);}
+  .header-right{display:flex;align-items:center;gap:24px;font-size:13.5px;color:var(--gray-2);}
+  .header-right .login{display:flex;align-items:center;gap:6px;color:var(--navy);font-weight:600;}
+
+  /* hero */
+  .hero{background:var(--yellow);padding:64px 0 0;overflow:hidden;}
+  .hero-inner{display:grid;grid-template-columns:1.1fr 0.9fr;align-items:center;gap:32px;}
+  .hero h1{
+    font-size:46px;font-weight:800;line-height:1.12;color:var(--navy);
+    max-width:520px;margin-bottom:18px;
+  }
+  .hero p{
+    font-size:16.5px;color:var(--navy-2);max-width:440px;margin-bottom:32px;
+  }
+  .btn{
+    display:inline-block;background:var(--navy);color:#fff;font-weight:700;
+    font-size:15px;padding:16px 30px;border-radius:10px;border:none;cursor:pointer;
+  }
+  .btn:hover{background:var(--navy-2);}
+  .btn-ghost{
+    display:inline-block;background:transparent;color:var(--navy);font-weight:700;
+    font-size:14.5px;padding:14px 0;border-bottom:2px solid var(--navy);
+  }
+  .hero-art{
+    display:flex;align-items:flex-end;justify-content:center;height:340px;
+  }
+  .box-stack{position:relative;width:220px;height:220px;}
+  .box-stack .b{
+    position:absolute;border-radius:10px;background:var(--navy);
+    display:flex;align-items:center;justify-content:center;color:var(--yellow);
+    font-weight:800;font-size:13px;box-shadow:0 12px 30px rgba(22,35,61,0.18);
+  }
+  .box-stack .b1{width:150px;height:150px;left:35px;bottom:0;}
+  .box-stack .b2{width:90px;height:90px;left:0;bottom:120px;background:#fff;color:var(--navy);border:2px solid var(--navy);box-shadow:none;}
+  .box-stack .b3{width:70px;height:70px;right:0;bottom:150px;background:var(--bg-soft);color:var(--navy);border:2px solid var(--navy);box-shadow:none;}
+
+  /* quicknav strip */
+  .quicknav{border-bottom:1px solid var(--line);}
+  .quicknav ul{display:flex;gap:40px;padding:22px 0;}
+  .quicknav li{display:flex;align-items:center;gap:10px;font-size:14.5px;font-weight:600;color:var(--gray-2);}
+  .qicon{
+    width:34px;height:34px;border-radius:9px;background:var(--bg-soft);
+    display:flex;align-items:center;justify-content:center;color:var(--navy);font-size:15px;font-weight:800;
+  }
+
+  /* sections */
+  section{padding:56px 0;}
+  section.alt{background:var(--bg-soft);}
+  h2{font-size:28px;font-weight:800;color:var(--navy);margin-bottom:20px;}
+  .lead{font-size:16px;color:var(--gray-2);max-width:640px;margin-bottom:24px;}
+  .lead b{color:var(--navy);}
+  .bullets li{
+    display:flex;gap:12px;font-size:15px;color:var(--gray-2);padding:10px 0;
+  }
+  .dot{
+    flex:none;width:8px;height:8px;border-radius:50%;background:var(--yellow);margin-top:8px;
+  }
+  .bullets b{color:var(--navy);}
+
+  /* who cards */
+  .who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px;}
+  .who-card{
+    background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;
+  }
+  .who-card .tag{
+    display:inline-block;background:var(--bg-soft);color:var(--navy);font-weight:700;
+    font-size:13px;padding:5px 12px;border-radius:8px;margin-bottom:12px;
+  }
+  .who-card p{font-size:14px;color:var(--gray-2);}
+
+  /* tariff banner */
+  .tariff-banner{
+    background:var(--yellow);border-radius:18px;padding:36px 40px;
+    display:flex;justify-content:space-between;align-items:center;gap:24px;margin-bottom:28px;
+  }
+  .tariff-banner h3{font-size:26px;font-weight:800;color:var(--navy);line-height:1.2;max-width:420px;}
+  .tariff-banner p{font-size:14.5px;color:var(--navy-2);max-width:280px;}
+  .honest-list{display:grid;gap:14px;}
+  .honest-item{
+    background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px;
+    display:flex;gap:14px;
+  }
+  .honest-item .flag{
+    flex:none;width:30px;height:30px;border-radius:8px;background:var(--navy);color:var(--yellow);
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;
+  }
+  .honest-item b{display:block;color:var(--navy);font-size:14.5px;margin-bottom:3px;}
+  .honest-item span{font-size:13.5px;color:var(--gray-2);}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .step-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;}
+  .step-num{
+    width:32px;height:32px;border-radius:9px;background:var(--navy);color:var(--yellow);
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;margin-bottom:14px;
+  }
+  .step-card h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+  .step-card p{font-size:14px;color:var(--gray-2);}
+
+  /* other services */
+  .other-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .other-card{
+    background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;
+    display:flex;flex-direction:column;gap:36px;
+  }
+  .other-icon{
+    width:44px;height:44px;border-radius:10px;background:var(--bg-soft);
+    display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--navy);
+  }
+  .other-card h3{font-size:16.5px;font-weight:700;color:var(--navy);}
+  .other-card a{font-size:13.5px;font-weight:700;color:var(--navy);}
+
+  /* footer cta */
+  .footer-cta{
+    background:var(--navy);border-radius:20px;padding:48px;text-align:center;margin:0 32px 56px;
+  }
+  .footer-cta h2{color:#fff;max-width:none;}
+  .footer-cta p{color:#B9C0CD;margin-bottom:24px;}
+  .footer-cta .btn{background:var(--yellow);color:var(--navy);}
+  .footer-cta .btn:hover{background:var(--yellow-dark);}
+
+  footer.site{border-top:1px solid var(--line);padding:24px 0;font-size:13px;color:var(--gray);display:flex;justify-content:space-between;}
+
+  @media (max-width:860px){
+    .hero-inner{grid-template-columns:1fr;}
+    .hero-art{height:220px;}
+    .who-grid,.other-grid,.steps{grid-template-columns:1fr;}
+    .tariff-banner{flex-direction:column;align-items:flex-start;}
+    nav{display:none;}
+    .footer-cta{margin:0 16px 40px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-inner">
+    <div class="logo"><span class="logo-mark">У</span>УКРПОШТА</div>
+    <nav>
+      <a href="#">Маркет</a>
+      <a href="#">Трекінг</a>
+      <a class="active" href="#">Послуги</a>
+      <a href="#">Тарифи</a>
+      <a href="#">Відділення</a>
+      <a href="#">Для бізнесу</a>
+    </nav>
+    <div class="header-right">
+      <span class="login">Вхід / Реєстрація</span>
+      <span>UA</span>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <h1>Абонементна скринька</h1>
+      <p>Особиста комірка на відділенні — листи, повідомлення про посилки й перекази чекають там, поки ви не заберете їх у зручний час, без черги за повідомленням.</p>
+      <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;">
+        <a href="#cta" class="btn">Продовжити оренду</a>
+        <a href="#tariff" class="btn-ghost">Дивитись тарифи</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="box-stack">
+        <div class="b b1">№ 4127</div>
+        <div class="b b2">лист</div>
+        <div class="b b3">ключ</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="quicknav">
+  <div class="wrap">
+    <ul>
+      <li><span class="qicon">1</span>Про послугу</li>
+      <li><span class="qicon">2</span>Кому підходить</li>
+      <li><span class="qicon">3</span>Тарифи</li>
+      <li><span class="qicon">4</span>Як замовити</li>
+    </ul>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <h2>Про послугу</h2>
+    <p class="lead"><b>Абонементна скринька</b> — закрита на ключ комірка на відділенні Укрпошти, яку ви орендуєте на визначений термін для отримання пошти на своє ім'я.</p>
+    <ul class="bullets" style="max-width:640px;">
+      <li><span class="dot"></span><span><b>Домашня адреса не світиться</b> — важливо для посилок з накладеним платежем чи просто для приватності.</span></li>
+      <li><span class="dot"></span><span><b>Коротка адреса</b> — номер скриньки й відділення замість повної домашньої адреси в кожному бланку.</span></li>
+      <li><span class="dot"></span><span><b>Фізична безпека</b> — скринька стоїть у приміщенні відділення, а не на вулиці чи в під'їзді.</span></li>
+      <li><span class="dot"></span><span><b>Забираєте, коли зручно</b> — не треба бути вдома в момент доставки чи стояти в черзі.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="alt" id="who">
+  <div class="wrap">
+    <h2>Кому підходить</h2>
+    <p class="lead">П'ять типових ситуацій, де скринька реально вирішує проблему, а не просто "зручна опція".</p>
+    <div class="who-grid">
+      <div class="who-card"><span class="tag">Фрілансери</span><p>Стабільна адреса для пошти без прив'язки до фактичного місця проживання, яке часто змінюється.</p></div>
+      <div class="who-card"><span class="tag">Продавці на маркетплейсах</span><p>Приймають накладені платежі й повернення, не розкриваючи домашню адресу покупцям.</p></div>
+      <div class="who-card"><span class="tag">Без скриньки вдома</span><p>У під'їзді немає абонентської шафи або вона в поганому стані — комірка на відділенні надійніша.</p></div>
+      <div class="who-card"><span class="tag">Юридичні особи</span><p>Офіційна адреса для кореспонденції, не прив'язана до фактичного офісу, з фіксацією видачі.</p></div>
+      <div class="who-card"><span class="tag">Приватність</span><p>Не хочеться, щоб сусіди чи родина бачили, що і від кого приходить.</p></div>
+      <div class="who-card"><span class="tag">Кілька скриньок</span><p>Одному користувачу за бажанням можуть видати декілька скриньок — зручно для окремих напрямків пошти.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="tariff">
+  <div class="wrap">
+    <h2>Тарифи та умови</h2>
+    <div class="tariff-banner">
+      <h3>Ціна залежить від розміру скриньки й терміну</h3>
+      <p>Актуальний тариф публікує Укрпошта на сайті — перевіряйте перед оплатою, він змінюється.</p>
+    </div>
+    <div class="honest-list">
+      <div class="honest-item"><span class="flag">!</span><div><b>Тариф зростає — не орієнтуйтесь на стару ціну</b><span>У 2026 році вартість оренди суттєво зросла порівняно з попередніми роками. Дивіться поточний прайс, а не цифри з відгуків чи форумів.</span></div></div>
+      <div class="honest-item"><span class="flag">!</span><div><b>Є не в кожному відділенні</b><span>Скриньки стоять лише там, де встановлені спеціальні шафи. Перевірте наявність вільної скриньки саме у вашому відділенні.</span></div></div>
+      <div class="honest-item"><span class="flag">!</span><div><b>Не переноситься на наступний рік автоматично</b><span>Термін завершується 31 грудня поточного року незалежно від дати оформлення — подовжувати треба самостійно й заздалегідь, щоб не втратити номер.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="order">
+  <div class="wrap">
+    <h2>Як замовити</h2>
+    <div class="steps">
+      <div class="step-card"><div class="step-num">1</div><h3>Оберіть відділення й розмір</h3><p>Онлайн — через особистий кабінет на сайті Укрпошти. Офлайн — заявою на ім'я начальника відділення з паспортними даними.</p></div>
+      <div class="step-card"><div class="step-num">2</div><h3>Оплатіть повний термін</h3><p>Послуга надається після повної попередньої оплати за весь обраний період.</p></div>
+      <div class="step-card"><div class="step-num">3</div><h3>Заберіть ключ</h3><p>Онлайн-замовлення підтверджується кодом активації, з яким приходите у відділення й отримуєте ключ особисто.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="other">
+  <div class="wrap">
+    <h2>Інші послуги</h2>
+    <div class="other-grid">
+      <div class="other-card"><div class="other-icon">↻</div><div><h3>Переадресація пошти</h3></div><a href="#">Докладніше ›</a></div>
+      <div class="other-card"><div class="other-icon">▣</div><div><h3>Відстеження відправлень</h3></div><a href="#">Докладніше ›</a></div>
+      <div class="other-card"><div class="other-icon">◈</div><div><h3>Абонементна скринька для бізнесу</h3></div><a href="#">Докладніше ›</a></div>
+    </div>
+  </div>
+</section>
+
+<div class="footer-cta" id="cta">
+  <h2>Продовжіть користування скринькою, поки номер ще ваш</h2>
+  <p>Заявку на продовження можна подати онлайн до завершення поточного терміну.</p>
+  <a href="https://www.ukrposhta.ua" class="btn">Перейти до особистого кабінету →</a>
+</div>
+
+<footer class="site">
+  <div class="wrap" style="display:flex;justify-content:space-between;">
+    <span>Абонементна скринька · Укрпошта</span>
+    <span>Незалежний огляд послуги</span>
+  </div>
+</footer>
+
+</body>
+</html>
